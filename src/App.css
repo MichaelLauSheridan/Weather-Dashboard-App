@@ -60,3 +60,27 @@ h1 {
   color: red;
   font-weight: bold;
 }
+
+.forecast-container {
+  margin-top: 30px;
+}
+
+.forecast-container h2 {
+  color: #1e3a8a;
+  margin-bottom: 20px;
+}
+
+.forecast-list {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.forecast-card {
+  background-color: white;
+  width: 180px;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
