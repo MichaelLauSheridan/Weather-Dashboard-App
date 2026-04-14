@@ -14,6 +14,21 @@ function App() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
 
+  function getDailyForecasts(list) {
+    const dailyData = {}
+
+    list.forEach((item) => {
+      const date = item.dt_txt.split(' ')[0]
+      const time = item.dt_txt.split(' ')[1]
+
+      if (!dailyData[date] || time === '12:00:00') {
+        dailyData[date] = item
+      }
+    })
+
+    return Object.values(dailyData).slice(0, 5)
+  }
+
   function fetchWeather() {
     if (city.trim() === '') {
       setError('Please enter a city name')
@@ -30,7 +45,10 @@ function App() {
     Promise.all([getWeather(city), getForecast(city)])
       .then(([weatherData, forecastData]) => {
         setWeather(weatherData)
-        setForecast(forecastData.list.slice(0, 5))
+
+        const dailyForecasts = getDailyForecasts(forecastData.list)
+        setForecast(dailyForecasts)
+
         setLoading(false)
       })
       .catch((err) => {
