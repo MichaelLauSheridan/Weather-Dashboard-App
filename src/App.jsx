@@ -42,6 +42,9 @@ function App() {
 
       {loading && <Loading />}
       {error && <ErrorMessage message={error} />}
+
+      {!weather && !loading && !error && <p>No data yet. Search for a city.</p>}
+      
       {weather && <WeatherCard weather={weather} />}
     </div>
   )
