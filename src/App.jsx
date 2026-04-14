@@ -37,20 +37,6 @@ function App() {
         setError(err.message)
         setLoading(false)
       })
-
-    setLoading(true)
-    setError('')
-    setWeather(null)
-
-    getWeather(city)
-      .then((data) => {
-        setWeather(data)
-        setLoading(false)
-      })
-      .catch((err) => {
-        setError(err.message)
-        setLoading(false)
-      })
   }
 
   return (
@@ -61,9 +47,9 @@ function App() {
 
       {loading && <Loading />}
       {error && <ErrorMessage message={error} />}
-
-      {!weather && !loading && !error && <p className="no-data">No data yet. Search for a city.</p>}
-
+      {!weather && !loading && !error && (
+        <p className="no-data-message">No data yet. Search for a city.</p>
+      )}
       {weather && <WeatherCard weather={weather} />}
       {forecast.length > 0 && <ForecastList forecast={forecast} />}
     </div>
