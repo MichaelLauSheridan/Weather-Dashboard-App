@@ -24,18 +24,18 @@ function App() {
     setWeather(null)
 
     getWeather(city)
-      .then(data => {
+      .then((data) => {
         setWeather(data)
         setLoading(false)
       })
-      .catch(err => {
+      .catch((err) => {
         setError(err.message)
         setLoading(false)
       })
   }
 
   return (
-    <div>
+    <div className="app-container">
       <h1>Weather App</h1>
 
       <SearchBar city={city} setCity={setCity} onSearch={fetchWeather} />
